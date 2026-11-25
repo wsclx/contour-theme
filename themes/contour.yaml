@@ -138,7 +138,8 @@ Contour:
   ha-card-border-color: "var(--contour-rim)"
   ha-card-border-width: "1px"
   ha-card-border-radius: "4px"
-  ha-card-box-shadow: "none"
+  # "none" would break the frontend's focus shadow (it is combined as "none, 0 0 0 1px …"); a transparent shadow keeps it
+  ha-card-box-shadow: "0 0 0 0 transparent"
   ha-badge-border-radius: "4px"
   ha-tile-icon-border-radius: "4px"
   divider-color: "var(--contour-rule)"

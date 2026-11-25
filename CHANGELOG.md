@@ -15,6 +15,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), ver
 - Keyboard focus on tiles (card-mod): a forest-green ring outside the card, as on badges; the frontend's own focus rim in the tile colour was hard to tell from the green card rim.
 
 ### Fixed
+- Keyboard focus on tiles, badges and button cards: the card shadow is now a transparent shadow instead of `none`, which had made the frontend's own focus shadow invalid.
 - Thermostat track setting removed: the thermostat sets its own track colour and ignores the theme value.
 - README: corners are rounded by 4 px, not square; the thermostat ring is the one control below 3:1 (its arcs are drawn half transparent by the frontend); `card-mod-root` is no longer part of the theme; light colours also stay in entities card rows; note for slow wall tablets.
 
