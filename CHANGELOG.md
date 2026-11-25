@@ -5,6 +5,17 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), ver
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-11-25
+
+### Changed
+- Contour background lighter in weight: about 12 KB per mode instead of 20 KB; index contours in the colour of the fine lines (only wider), so section titles on top keep 4.5:1.
+- Red, orange, green and blue scales derived from the map inks, so alerts, danger and success buttons and chips stay within the map print.
+- Lower tile sliders (card-mod) only with a mouse; touch screens keep the full finger size.
+- Dialog corners 4 px like the cards; switches react to hover.
+
+### Fixed
+- README: corners are rounded by 4 px, not square; the thermostat ring is the one control below 3:1 (its arcs are drawn half transparent by the frontend); `card-mod-root` is no longer part of the theme; light colours also stay in entities card rows; note for slow wall tablets.
+
 ## [1.0.0] - 2026-11-25
 
 ### Added
