@@ -20,7 +20,7 @@ A theme for Home Assistant in the style of a printed hiking map. Fine brown cont
 - **Five map inks, nothing else.** Forest green for buttons, links, switches, selection and the keyboard focus; contour brown for charts; water blue for sliders, gauges and information; road red for active devices and errors; ink for text. Every other colour the frontend asks for (purple, pink, yellow and so on) is mapped onto one of these inks. All text pairs meet WCAG 4.5:1 and all controls 3:1, in both modes.
 - **Road red means active.** Lights, switches, fans, media players, open covers and heating show their icon in road red, like a marked point on the map.
 - **A narrow map face from your system.** Avenir Next Condensed on Apple devices, Bahnschrift on Windows, the condensed system sans on Android, narrow DejaVu or Liberation cuts on Linux. Nothing is downloaded.
-- **Optional extras with card-mod:** a small red map pin on tiles of devices that are on, coloured lights and their badges in road red instead of the bulb colour, dashed rules between the rows of entities cards, letter-spaced capitals for section titles, card titles and the sidebar, the map face in the sidebar and a framed selection there like a legend entry.
+- **Optional extras with card-mod:** a small red map pin on tiles of devices that are on, coloured lights and their badges in road red instead of the bulb colour, dashed rules between the rows of entities cards, letter-spaced capitals for section titles, card titles and the sidebar, the map face in the sidebar, a framed selection there like a legend entry, and a clear focus ring on badges.
 
 Without card-mod the theme still works: background, sheets, inks, red active icons, switches and focus stay the same. There is no map pin, coloured lights keep their own colour, entities cards have no rules between rows, titles stay in mixed case, and the sidebar keeps the default font of the frontend.
 
@@ -94,7 +94,7 @@ Change the variables below in a copy of the theme, or override them with card-mo
 - Grid squares (A1, B1 …) in the corner of each section, as on a printed map, are not part of the theme: a theme cannot tell in which column a card sits. Write them into your section headings if you like the look.
 - The contour lines behind the cards cannot follow your data; the small contour charts inside cards that a map-style mockup might show are not possible with a theme. Charts use the map inks.
 - Icons stay Material Design Icons; a theme cannot swap icon sets. Weather icons are drawn by the frontend; the theme sets their colours (ochre sun, water-blue rain, pale clouds).
-- Without card-mod, coloured lights keep their own colour on tiles and badges, and the sidebar keeps the default font of the frontend.
+- Without card-mod, coloured lights keep their own colour on tiles and badges, the sidebar keeps the default font of the frontend, and keyboard focus on a badge with a green icon shows only as a slightly thicker rim.
 - The thermostat ring and the size of switches are drawn by the frontend; the theme only sets their colours.
 - The narrow font depends on your device. Where none of the narrow faces is installed, the system UI font is used.
 - On iOS and iPadOS the background scrolls with the page instead of staying fixed (Safari ignores fixed backgrounds there).

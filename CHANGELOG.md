@@ -12,4 +12,4 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), ver
 - Contour background as an embedded SVG, white map sheets with a thin forest-green rim, no shadows. Works without add-ons.
 - Five map inks only (forest green, contour brown, water blue, road red, ink); every palette colour of the frontend is mapped onto them. Text 4.5:1 and controls 3:1 in both modes.
 - Road red for active devices, forest-green switches, selection and keyboard focus, narrow system fonts.
-- Optional card-mod rules: red map pins on active device tiles, coloured lights and badges in road red, dashed rules between rows of entities cards, letter-spaced capitals for titles and the sidebar, map font and framed selection in the sidebar.
+- Optional card-mod rules: red map pins on active device tiles, coloured lights and badges in road red, dashed rules between rows of entities cards, letter-spaced capitals for titles and the sidebar, map font and framed selection in the sidebar, focus ring on badges.
