@@ -18,13 +18,15 @@ A theme for Home Assistant in the style of a printed hiking map. Fine brown cont
 - **Contour background.** The relief behind your dashboards is an SVG embedded in the theme (about 20 KB per mode). Nothing is downloaded, and the lines are quiet enough that section titles on top of them stay readable.
 - **Map sheets.** Cards are white (dark: deep green) sheets with a thin forest-green rim, square corners and no shadow, because print is flat.
 - **Five map inks, nothing else.** Forest green for buttons, links, switches, selection and the keyboard focus; contour brown for charts; water blue for sliders, gauges and information; road red for active devices and errors; ink for text. Every other colour the frontend asks for (purple, pink, yellow and so on) is mapped onto one of these inks. All text pairs meet WCAG 4.5:1 and all controls 3:1, in both modes.
-- **Road red means active.** Lights, switches, fans, media players, open covers and heating show their icon in road red, like a marked point on the map.
+- **Road red means active.** Lights, switches, fans, media players, open covers, detected motion and heating show their icon in road red, like a marked point on the map. Locks, alarms that are armed and people at home are forest green, anything pending is ochre.
+- **Map density.** Sheets lie close together (6 px apart), section titles are set larger like the title of a map sheet, rows of entities cards get more air.
+- **Square controls.** Tile sliders and buttons have square corners like a map scale bar; the thermostat track is printed in the rule colour at full strength instead of a faint tint.
 - **A narrow map face from your system.** Avenir Next Condensed on Apple devices, Bahnschrift on Windows, the condensed system sans on Android, narrow DejaVu or Liberation cuts on Linux. Nothing is downloaded.
-- **Optional extras with card-mod:** a small red map pin on tiles of devices that are on, coloured lights and their badges in road red instead of the bulb colour, dashed rules between the rows of entities cards, letter-spaced capitals for section titles, card titles and the sidebar, the map face in the sidebar, a framed selection there like a legend entry, and a clear focus ring on badges.
+- **Optional extras with card-mod:** a small red map pin and a red state line ("On", "Playing", "Open") on tiles of devices that are active, like a marked point with its label; coloured light tiles in road red instead of the bulb colour; lower tile sliders like a scale bar; dashed trail lines between the rows of entities cards; letter-spaced capitals for section titles, card titles, badges and the sidebar; the map face in the sidebar, a framed selection there like a legend entry, and a clear focus ring on badges.
 
-Without card-mod the theme still works: background, sheets, inks, red active icons, switches and focus stay the same. There is no map pin, coloured lights keep their own colour, entities cards have no rules between rows, titles stay in mixed case, and the sidebar keeps the default font of the frontend.
+Without card-mod the theme still works: background, sheets, inks, red active icons, switches and focus stay the same. There is no map pin and no red state line, coloured lights keep their own colour, tile sliders keep the default height, entities cards have no lines between rows, titles stay in mixed case, and the sidebar keeps the default font of the frontend.
 
-![Without card-mod: same map and sheets, no pins, no dashed rules, mixed-case titles](https://raw.githubusercontent.com/wsclx/contour-theme/main/images/dashboard-light-desktop-no-cardmod.png)
+![Without card-mod: same map and sheets, no pins, no dashed lines, mixed-case titles](https://raw.githubusercontent.com/wsclx/contour-theme/main/images/dashboard-light-desktop-no-cardmod.png)
 
 | Settings, light | Settings, dark |
 |---|---|
@@ -72,7 +74,7 @@ frontend:
 
 Adjust the path to where card-mod is installed on your system.
 
-Sections dashboards with **tile cards** show the map pins; **entities cards** read like a legend with dashed rules between the rows.
+Sections dashboards with **tile cards** show the map pins; **entities cards** read like a legend with dashed trail lines between the rows.
 
 ## Customise
 
@@ -94,8 +96,8 @@ Change the variables below in a copy of the theme, or override them with card-mo
 - Grid squares (A1, B1 …) in the corner of each section, as on a printed map, are not part of the theme: a theme cannot tell in which column a card sits. Write them into your section headings if you like the look.
 - The contour lines behind the cards cannot follow your data; the small contour charts inside cards that a map-style mockup might show are not possible with a theme. Charts use the map inks.
 - Icons stay Material Design Icons; a theme cannot swap icon sets. Weather icons are drawn by the frontend; the theme sets their colours (ochre sun, water-blue rain, pale clouds).
-- Without card-mod, coloured lights keep their own colour on tiles and badges, the sidebar keeps the default font of the frontend, and keyboard focus on a badge with a green icon shows only as a slightly thicker rim.
-- The thermostat ring and the size of switches are drawn by the frontend; the theme only sets their colours.
+- Coloured lights keep their own colour in badges and in the light dialog. Without card-mod they also keep it on tiles, the sidebar keeps the default font of the frontend, and keyboard focus on a badge with a green icon shows only as a slightly thicker rim.
+- The thermostat ring, the size of switches and the height of tile sliders are set by the frontend; the theme sets colours and corners (card-mod lowers the sliders). A frame around sliders is not possible.
 - The narrow font depends on your device. Where none of the narrow faces is installed, the system UI font is used.
 - On iOS and iPadOS the background scrolls with the page instead of staying fixed (Safari ignores fixed backgrounds there).
 - Home Assistant does not guarantee theme variables between releases. If something looks off after an update, please open an issue with your version.

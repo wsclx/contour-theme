@@ -9,9 +9,12 @@
 # Works without any add-on: colours, the contour background (an embedded SVG, nothing is downloaded), the sheet
 # cards with their rim, road red for active devices, water blue for information, the narrow map font and the
 # keyboard focus come from plain theme variables.
-# With card-mod 4.x installed (optional), the card-mod-* keys add a small red map pin on active tiles, dashed rules
-# between rows of entities cards, letter-spaced capitals for headings and the sidebar, the narrow font in the
-# sidebar and a framed selection there. Without card-mod those keys are ignored.
+# Also without add-ons: map density (sheets close together, larger section titles), square tile sliders and a
+# printed thermostat track.
+# With card-mod 4.x installed (optional), the card-mod-* keys add a red map pin and a red state line on active
+# device tiles, lower tile sliders like a scale bar, dashed trail lines between rows of entities cards, letter-spaced capitals for headings, badges and
+# the sidebar, the narrow font in the sidebar, a framed selection there and a clear focus ring on badges. Without
+# card-mod those keys are ignored.
 #
 # Fonts: narrow system fonts only (Avenir Next Condensed on Apple devices, Bahnschrift on Windows, the condensed
 # system sans on Android, DejaVu or Liberation narrow cuts on Linux). Nothing is downloaded.
@@ -85,9 +88,11 @@ Contour:
   ha-card-box-shadow: "none"
   ha-badge-border-radius: "4px"
   ha-tile-icon-border-radius: "4px"
-  ha-card-features-border-radius: "3px"
-  feature-border-radius: "3px"
   divider-color: "var(--contour-rule)"
+  # Density of a map: sheets lie close together, rows of a legend get air for the dashed rule between them
+  ha-section-grid-row-gap: "6px"
+  ha-section-grid-column-gap: "6px"
+  entities-card-row-gap: "12px"
   ha-heading-card-title-color: "var(--contour-ink)"
   ha-heading-card-subtitle-color: "var(--contour-ink-soft)"
   ha-heading-card-title-font-weight: "600"
@@ -145,6 +150,11 @@ Contour:
   code-editor-background-color: "var(--contour-field)"
   markdown-code-background-color: "var(--contour-field)"
 
+  # Tile sliders and buttons square like a map scale bar (their height is fixed in the frontend; card-mod lowers it)
+  ha-card-features-border-radius: "2px"
+  # Thermostat: the track printed in the rule colour at full strength, not a tinted shadow of the state colour
+  control-circular-slider-background: "var(--contour-rule)"
+  control-circular-slider-background-opacity: "1"
   # Sliders and gauges in water blue, charts in the map print colours
   slider-color: "var(--contour-water)"
   slider-track-color: "var(--contour-rule)"
@@ -169,6 +179,8 @@ Contour:
   ha-font-family-code: "ui-monospace, Menlo, Consolas, monospace"
   code-font-family: "ui-monospace, Menlo, Consolas, monospace"
   ha-tile-info-primary-letter-spacing: ".02em"
+  # Section titles as map sheet titles: one step larger than the frontend default
+  ha-heading-card-title-font-size: "19px"
 
   # Messages
   error-color: "var(--contour-road)"
@@ -211,13 +223,42 @@ Contour:
   state-climate-auto-color: "var(--contour-forest)"
   state-lock-locked-color: "var(--contour-forest)"
   state-lock-unlocked-color: "var(--contour-road)"
+  state-lock-open-color: "var(--contour-road)"
+  state-lock-jammed-color: "var(--contour-road)"
+  state-lock-locking-color: "var(--contour-ochre)"
+  state-lock-unlocking-color: "var(--contour-ochre)"
+  state-siren-active-color: "var(--contour-road)"
+  state-binary_sensor-active-color: "var(--contour-road)"
+  state-binary_sensor-moisture-on-color: "var(--contour-water)"
+  state-valve-active-color: "var(--contour-water)"
+  state-water_heater-eco-color: "var(--contour-forest)"
+  # Secured and at home in forest green, pending in ochre, alarm in road red
+  state-alarm_control_panel-armed_away-color: "var(--contour-forest)"
+  state-alarm_control_panel-armed_home-color: "var(--contour-forest)"
+  state-alarm_control_panel-armed_night-color: "var(--contour-forest)"
+  state-alarm_control_panel-armed_vacation-color: "var(--contour-forest)"
+  state-alarm_control_panel-armed_custom_bypass-color: "var(--contour-forest)"
+  state-alarm_control_panel-arming-color: "var(--contour-ochre)"
+  state-alarm_control_panel-pending-color: "var(--contour-ochre)"
+  state-alarm_control_panel-triggered-color: "var(--contour-road)"
+  state-person-home-color: "var(--contour-forest)"
+  state-device_tracker-home-color: "var(--contour-forest)"
+  state-sun-above_horizon-color: "var(--contour-ochre)"
+  state-sun-below_horizon-color: "var(--contour-water)"
+  state-update-active-color: "var(--contour-ochre)"
+  state-sensor-battery-low-color: "var(--contour-road)"
+  state-sensor-battery-medium-color: "var(--contour-ochre)"
+  state-sensor-battery-high-color: "var(--contour-forest)"
+  state-vacuum-error-color: "var(--contour-road)"
+  state-lawn_mower-active-color: "var(--contour-forest)"
+  state-plant-active-color: "var(--contour-forest)"
 
-  # Optional, card-mod 4.x: a small red map pin on tiles of devices that are on, open, playing or detecting.
-  # The domain list matters: the tile card marks any entity with a value as active, sensors included.
-  # Coloured lights in road red instead of their bulb colour; dashed rules between rows of entities cards;
-  # letter-spaced capitals for headings and card titles.
+  # Optional, card-mod 4.x: devices that are on, open, playing or detecting get a red map pin at their symbol and
+  # their state line in road red, as a marked point with its label on a map. The domain list matters: the tile card
+  # marks any entity with a value as active, sensors included. Coloured lights in road red instead of the bulb colour.
+  # Rows of entities cards are separated by a dashed trail line; headings and card titles are letter-spaced capitals.
   card-mod-card: |
-    ha-card.active ha-tile-icon:is([data-domain=light], [data-domain=switch], [data-domain=fan], [data-domain=media_player], [data-domain=climate], [data-domain=input_boolean], [data-domain=humidifier], [data-domain=water_heater], [data-domain=vacuum], [data-domain=remote], [data-domain=siren], [data-domain=cover], [data-domain=valve], [data-domain=binary_sensor]) { position: relative; }
+    ha-tile-icon { position: relative; }
     ha-card.active ha-tile-icon:is([data-domain=light], [data-domain=switch], [data-domain=fan], [data-domain=media_player], [data-domain=climate], [data-domain=input_boolean], [data-domain=humidifier], [data-domain=water_heater], [data-domain=vacuum], [data-domain=remote], [data-domain=siren], [data-domain=cover], [data-domain=valve], [data-domain=binary_sensor])::after {
       content: "";
       position: absolute;
@@ -228,29 +269,26 @@ Contour:
       background: var(--contour-pin) center / contain no-repeat;
       pointer-events: none;
     }
+    hui-card-features { --feature-height: 32px; }
+    ha-card.active:has(ha-tile-icon:is([data-domain=light], [data-domain=switch], [data-domain=fan], [data-domain=media_player], [data-domain=climate], [data-domain=input_boolean], [data-domain=humidifier], [data-domain=water_heater], [data-domain=vacuum], [data-domain=remote], [data-domain=siren], [data-domain=cover], [data-domain=valve], [data-domain=binary_sensor])) { --ha-tile-info-secondary-color: var(--contour-road); }
     ha-card.active:has(ha-tile-icon[data-domain=light]) { --tile-color: var(--state-light-active-color) !important; }
-    :host(hui-entities-card) #states > div + div::before {
+    :host(hui-entities-card) #states > div + div::after {
       content: "";
       position: absolute;
-      top: calc(var(--entities-card-row-gap, 8px) / -2);
-      left: 0;
-      right: 0;
-      border-top: 1px dashed var(--contour-rule);
+      inset: calc(var(--entities-card-row-gap) / -2 - .5px) 0 auto;
+      height: 1px;
+      background: repeating-linear-gradient(90deg, var(--contour-rule) 0 7px, transparent 7px 11px);
     }
     :host(hui-heading-card) .title .heading,
     .card-header {
       text-transform: uppercase;
       letter-spacing: .08em;
     }
-  # Optional, card-mod 4.x: badges of coloured lights in road red instead of the bulb colour; a clear focus ring
-  # (the frontend marks a focused badge only with a rim in the icon colour, which matches the green card rim)
+  # Optional, card-mod 4.x: badges as map legend labels (capitals, letter-spaced) and a clear focus ring (the frontend
+  # marks a focused badge only with a rim in the icon colour, which matches the green card rim)
   card-mod-badge: |
-    ha-badge { display: inline-flex; }
+    ha-badge { display: inline-flex; text-transform: uppercase; letter-spacing: .06em; }
     ha-badge:focus-within { outline: 2px solid var(--ha-color-focus); outline-offset: 2px; border-radius: 6px; }
-    ha-badge[style*="--badge-color:#"], ha-badge[style*="--badge-color:rgb"] { --badge-color: var(--state-light-active-color) !important; }
-  # Optional, card-mod 4.x: the dashboard title in the map face
-  card-mod-root: |
-    .main-title { font-family: var(--contour-font); letter-spacing: .02em; }
   # Optional, card-mod 4.x: the sidebar in the map face, capitals, a framed selection like a legend entry
   card-mod-sidebar: |
     :host { font-family: var(--contour-font); }
